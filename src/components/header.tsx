@@ -1,9 +1,24 @@
+'use client';
+
 import Link from 'next/link';
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
+import { usePathname } from 'next/navigation';
 import { ModeToggle } from '@/components/mode-toggle';
-import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import clsx from 'clsx';
 
 export default function Header() {
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/features', label: 'Features' },
+    { href: '/version-archive', label: 'Version Archive' },
+    { href: '/team', label: 'Team' },
+    { href: '/contact', label: 'Contact' },
+  ];
+
   return (
     <div className='p-4 w-full flex items-center justify-between sticky top-0 z-50 backdrop-blur-sm border-b bg-background/95 supports-[backdrop-filter]:bg-background/60'>
       <Link href='/'>
@@ -17,16 +32,27 @@ export default function Header() {
       </Link>
 
       <div className='flex items-center justify-center gap-8'>
-        <Link href='/'>Home</Link>
-        <Link href='/about'>About</Link>
-        <Link href='/features'>Features</Link>
-        <Link href='/version-archive'>Version Archive</Link>
-        <Link href='/team'>Team</Link>
+        {navLinks.map(({ href, label }) => (
+          <Link
+            key={href}
+            href={href}
+            className={clsx(
+              'transition hover:underline',
+              pathname === href && 'underline underline-offset-4 font-medium'
+            )}
+          >
+            {label}
+          </Link>
+        ))}
 
         <div className='flex items-center justify-center gap-4'>
-          <Button asChild>
-            <Link href='/contact'>Get in Touch</Link>
-          </Button>
+          <HoverBorderGradient
+            containerClassName='rounded-full'
+            as='button'
+            className='dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2'
+          >
+            <Link href='/contact'>Get .apk</Link>
+          </HoverBorderGradient>
           <ModeToggle />
         </div>
       </div>

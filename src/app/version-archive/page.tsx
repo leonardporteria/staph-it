@@ -1,7 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import React from 'react';
 import { Timeline } from '@/components/ui/timeline';
-import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 
 export default function Home() {
   const data = [
@@ -150,28 +151,6 @@ export default function Home() {
   ];
   return (
     <div className='w-full'>
-      <ContainerScroll
-        titleComponent={
-          <>
-            <h1 className='text-4xl font-semibold text-black dark:text-white'>
-              .apk Archive of
-              <br />
-              <span className='text-4xl md:text-[6rem] font-bold mt-1 leading-none'>
-                StaPH it
-              </span>
-            </h1>
-          </>
-        }
-      >
-        <Image
-          src={`/1to4_Typog.png`}
-          alt='hero'
-          height={720}
-          width={1400}
-          className='mx-auto rounded-2xl object-cover h-full object-left-top'
-          draggable={false}
-        />
-      </ContainerScroll>
       <Timeline data={data} />
     </div>
   );

@@ -1,21 +1,24 @@
+'use client';
+
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const sections = [
   {
     title: 'Product',
-    links: [{ name: 'StaPH it', href: '#' }],
+    links: [{ name: 'StaPH it', href: '/' }],
   },
   {
     title: 'Company',
     links: [
-      { name: 'About', href: '#' },
-      { name: 'Team', href: '#' },
+      { name: 'About', href: '/about' },
+      { name: 'Team', href: '/team' },
     ],
   },
   {
     title: 'Resources',
-    links: [{ name: 'StaPH it Archive', href: '#' }],
+    links: [{ name: 'StaPH it Archive', href: '/version-archive' }],
   },
 ];
 
@@ -36,39 +39,39 @@ const Footer = ({
   },
 }: FooterProps) => {
   return (
-    <section className='p-4'>
+    <section className='p-4 border-t'>
       <div className='container'>
         <footer>
           <div className='flex  items-start justify-between gap-10 text-center '>
             <div className='flex w-full max-w-96 shrink flex-col items-center justify-between gap-6 '>
               {/* Logo */}
               <div className='flex items-center gap-2 lg:justify-start'>
-                <a href='https://ui.shadcn.com/' target='_blank'>
+                <Link href='https://ui.shadcn.com/' target='_blank'>
                   <Image src={logo.src} alt={logo.alt} width={50} height={50} />
-                </a>
+                </Link>
                 <h2 className='text-xl font-semibold'>{logo.title}</h2>
               </div>
               <p className='text-sm text-muted-foreground'>Game Developers</p>
               <ul className='flex items-center space-x-6 text-muted-foreground'>
                 <li className='font-medium hover:text-primary'>
-                  <a href='#'>
+                  <Link href='#' target='_blank'>
                     <FaInstagram className='size-6' />
-                  </a>
+                  </Link>
                 </li>
                 <li className='font-medium hover:text-primary'>
-                  <a href='#'>
+                  <Link href='#' target='_blank'>
                     <FaFacebook className='size-6' />
-                  </a>
+                  </Link>
                 </li>
                 <li className='font-medium hover:text-primary'>
-                  <a href='#'>
+                  <Link href='#' target='_blank'>
                     <FaTwitter className='size-6' />
-                  </a>
+                  </Link>
                 </li>
                 <li className='font-medium hover:text-primary'>
-                  <a href='#'>
+                  <Link href='#' target='_blank'>
                     <FaLinkedin className='size-6' />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -82,7 +85,7 @@ const Footer = ({
                         key={linkIdx}
                         className='font-medium hover:text-primary'
                       >
-                        <a href={link.href}>{link.name}</a>
+                        <Link href={link.href}>{link.name}</Link>
                       </li>
                     ))}
                   </ul>
@@ -94,10 +97,16 @@ const Footer = ({
             <p>© 2025 1to4. All rights reserved.</p>
             <ul className='flex justify-center gap-4 lg:justify-start'>
               <li className='hover:text-primary'>
-                <a href='#'> Terms and Conditions</a>
+                <Link href='#' target='_blank'>
+                  {' '}
+                  Terms and Conditions
+                </Link>
               </li>
               <li className='hover:text-primary'>
-                <a href='#'> Privacy Policy</a>
+                <Link href='#' target='_blank'>
+                  {' '}
+                  Privacy Policy
+                </Link>
               </li>
             </ul>
           </div>
