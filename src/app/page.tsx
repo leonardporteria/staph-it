@@ -52,6 +52,8 @@ export default function Home() {
   return (
     <div className='w-full mb-10 rounded-3xl p-4'>
       <div className=''>
+        <h1 className='text-center text-6xl m-5'>StaPH it</h1>
+
         <div className='relative z-20 flex flex-wrap items-center justify-center gap-4 pt-4'>
           <HoverBorderGradient
             containerClassName='rounded-full'
