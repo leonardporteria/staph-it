@@ -33,7 +33,9 @@ export default function DataTable() {
   const [search, setSearch] = useState('');
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:5008/api/buildnotes');
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/buildnotes`
+    );
     setData(res.data);
   };
 
@@ -48,15 +50,23 @@ export default function DataTable() {
   };
 
   const handleDelete = async (id: number) => {
-    await axios.delete(`http://localhost:5008/api/buildnotes/${id}`);
+    await axios.delete(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/buildnotes/${id}`
+    );
     fetchData();
   };
 
   const handleFormSubmit = async (note: Partial<BuildNote>) => {
     if (note.id) {
-      await axios.put(`http://localhost:5008/api/buildnotes/${note.id}`, note);
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/buildnotes/${note.id}`,
+        note
+      );
     } else {
-      await axios.post('http://localhost:5008/api/buildnotes', note);
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/buildnotes`,
+        note
+      );
     }
     setShowForm(false);
     fetchData();

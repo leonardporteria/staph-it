@@ -25,7 +25,9 @@ export default function Home() {
   useEffect(() => {
     const fetchTeam = async () => {
       try {
-        const res = await fetch('http://localhost:5008/api/teams');
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/teams`
+        );
         const data = await res.json();
         setTeam(data);
       } catch (error) {

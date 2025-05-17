@@ -18,7 +18,9 @@ export default function Home() {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await fetch('http://localhost:5008/api/reviews');
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/reviews`
+        );
         const data = await res.json();
         const approvedReviews = data.filter(
           (review: Review) => review.approved
@@ -31,7 +33,9 @@ export default function Home() {
 
     const fetchTeamMembers = async () => {
       try {
-        const res = await fetch('http://localhost:5008/api/teams');
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/teams`
+        );
         const data = await res.json();
         setTeamMembers(data);
       } catch (error) {

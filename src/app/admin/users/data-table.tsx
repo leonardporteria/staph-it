@@ -33,7 +33,9 @@ export default function UsersDataTable() {
   const [search, setSearch] = useState('');
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:5008/api/users');
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users`
+    );
     setData(res.data);
   };
 
@@ -48,15 +50,23 @@ export default function UsersDataTable() {
   };
 
   const handleDelete = async (id: number) => {
-    await axios.delete(`http://localhost:5008/api/users/${id}`);
+    await axios.delete(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${id}`
+    );
     fetchData();
   };
 
   const handleFormSubmit = async (user: Partial<User>) => {
     if (user.id) {
-      await axios.put(`http://localhost:5008/api/users/${user.id}`, user);
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/${user.id}`,
+        user
+      );
     } else {
-      await axios.post(`http://localhost:5008/api/users`, user);
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users`,
+        user
+      );
     }
     setShowForm(false);
     fetchData();

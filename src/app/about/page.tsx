@@ -23,7 +23,9 @@ export default function Home() {
   useEffect(() => {
     const fetchAbout = async () => {
       try {
-        const res = await fetch('http://localhost:5008/api/about');
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/about`
+        );
         const data = await res.json();
         setAboutItems(data);
       } catch (error) {

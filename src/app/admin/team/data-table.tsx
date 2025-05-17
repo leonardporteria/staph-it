@@ -34,7 +34,9 @@ export default function TeamTable() {
   const [search, setSearch] = useState('');
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:5008/api/teams');
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/teams`
+    );
     setData(res.data);
   };
 
@@ -49,15 +51,23 @@ export default function TeamTable() {
   };
 
   const handleDelete = async (id: number) => {
-    await axios.delete(`http://localhost:5008/api/teams/${id}`);
+    await axios.delete(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/teams/${id}`
+    );
     fetchData();
   };
 
   const handleFormSubmit = async (member: Partial<Team>) => {
     if (member.id) {
-      await axios.put(`http://localhost:5008/api/teams/${member.id}`, member);
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/teams/${member.id}`,
+        member
+      );
     } else {
-      await axios.post('http://localhost:5008/api/teams', member);
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/teams`,
+        member
+      );
     }
     setShowForm(false);
     fetchData();

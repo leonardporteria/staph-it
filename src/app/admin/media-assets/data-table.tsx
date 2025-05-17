@@ -33,7 +33,9 @@ export default function MediaAssetsTable() {
   const [search, setSearch] = useState('');
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:5008/api/mediaassets');
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/mediaassets`
+    );
     setData(res.data);
   };
 
@@ -48,18 +50,23 @@ export default function MediaAssetsTable() {
   };
 
   const handleDelete = async (id: number) => {
-    await axios.delete(`http://localhost:5008/api/mediaassets/${id}`);
+    await axios.delete(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/mediaassets/${id}`
+    );
     fetchData();
   };
 
   const handleFormSubmit = async (asset: Partial<MediaAsset>) => {
     if (asset.id) {
       await axios.put(
-        `http://localhost:5008/api/mediaassets/${asset.id}`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/mediaassets/${asset.id}`,
         asset
       );
     } else {
-      await axios.post('http://localhost:5008/api/mediaassets', asset);
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/mediaassets`,
+        asset
+      );
     }
     setShowForm(false);
     fetchData();

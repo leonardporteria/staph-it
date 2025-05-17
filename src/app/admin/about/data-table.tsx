@@ -33,7 +33,9 @@ export default function AboutTable() {
   const [search, setSearch] = useState('');
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:5008/api/about');
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/about`
+    );
     setData(res.data);
   };
 
@@ -48,15 +50,21 @@ export default function AboutTable() {
   };
 
   const handleDelete = async (id: number) => {
-    await axios.delete(`http://localhost:5008/api/about/${id}`);
+    await axios.delete(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${id}`);
     fetchData();
   };
 
   const handleFormSubmit = async (about: Partial<About>) => {
     if (about.id) {
-      await axios.put(`http://localhost:5008/api/about/${about.id}`, about);
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/${about.id}`,
+        about
+      );
     } else {
-      await axios.post('http://localhost:5008/api/about', about);
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/about`,
+        about
+      );
     }
     setShowForm(false);
     fetchData();

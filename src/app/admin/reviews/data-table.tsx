@@ -33,7 +33,9 @@ export default function ReviewsDataTable() {
   const [search, setSearch] = useState('');
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:5008/api/reviews');
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/reviews`
+    );
     setData(res.data);
   };
 
@@ -48,15 +50,23 @@ export default function ReviewsDataTable() {
   };
 
   const handleDelete = async (id: number) => {
-    await axios.delete(`http://localhost:5008/api/reviews/${id}`);
+    await axios.delete(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/reviews/${id}`
+    );
     fetchData();
   };
 
   const handleFormSubmit = async (review: Partial<Review>) => {
     if (review.id) {
-      await axios.put(`http://localhost:5008/api/reviews/${review.id}`, review);
+      await axios.put(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/reviews/${review.id}`,
+        review
+      );
     } else {
-      await axios.post('http://localhost:5008/api/reviews', review);
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/reviews`,
+        review
+      );
     }
     setShowForm(false);
     fetchData();

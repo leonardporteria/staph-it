@@ -33,7 +33,9 @@ export default function FeaturesTable() {
   const [search, setSearch] = useState('');
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:5008/api/features');
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/features`
+    );
     setData(res.data);
   };
 
@@ -48,18 +50,23 @@ export default function FeaturesTable() {
   };
 
   const handleDelete = async (id: number) => {
-    await axios.delete(`http://localhost:5008/api/features/${id}`);
+    await axios.delete(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/features/${id}`
+    );
     fetchData();
   };
 
   const handleFormSubmit = async (feature: Partial<Feature>) => {
     if (feature.id) {
       await axios.put(
-        `http://localhost:5008/api/features/${feature.id}`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/features/${feature.id}`,
         feature
       );
     } else {
-      await axios.post('http://localhost:5008/api/features', feature);
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/features`,
+        feature
+      );
     }
     setShowForm(false);
     fetchData();
