@@ -1,41 +1,41 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { Twitter, Github, Linkedin } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 
-const team = [
-  {
-    name: 'Kurt Carreon',
-    role: 'Project Manager',
-    image: '/1to4.png',
-  },
-  {
-    name: 'Joaquin Gonzales',
-    role: 'UI/UX Designer',
-    image: '/1to4.png',
-  },
-  {
-    name: 'Lovely Villacorte',
-    role: 'Quality Assurance',
-    image: '/1to4.png',
-  },
-  {
-    name: 'Leonard Porteria',
-    role: 'Fullstack Developer',
-    image: '/1to4.png',
-  },
-  {
-    name: 'Archer Shane Bigornia',
-    role: 'Game Developer | Frontend',
-    image: '/1to4.png',
-  },
-  {
-    name: 'Noelle Escultero',
-    role: 'Game Developer | Backend',
-    image: '/1to4.png',
-  },
-];
+interface Team {
+  id: number;
+  name: string;
+  description: string;
+  imageUrl: string;
+  position: string;
+  positionShortcut: string;
+  linkedIn: string;
+  facebook: string;
+  github: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 export default function Home() {
+  const [team, setTeam] = useState<Team[]>([]);
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const res = await fetch('http://localhost:5008/api/teams');
+        const data = await res.json();
+        setTeam(data);
+      } catch (error) {
+        console.error('Failed to fetch team members:', error);
+      }
+    };
+
+    fetchTeam();
+  }, []);
+
   return (
     <div className='container py-24 lg:py-32'>
       {/* Title */}
@@ -50,27 +50,51 @@ export default function Home() {
       {/* Grid */}
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
         {team.map((member) => (
-          <div key={member.name} className='flex flex-col items-center'>
+          <div key={member.id} className='flex flex-col items-center'>
             <Avatar className='size-20'>
-              <AvatarImage src={member.image} alt={member.name} />
+              <AvatarImage src={member.imageUrl} alt={member.name} />
               <AvatarFallback>{member.name[0]}</AvatarFallback>
             </Avatar>
             <div className='mt-4 text-center'>
               <h3 className='font-medium'>{member.name}</h3>
               <p className='text-sm text-muted-foreground mt-1'>
-                {member.role}
+                {member.position}
               </p>
             </div>
             <div className='mt-3 flex gap-2'>
-              <Button size='icon' variant='ghost'>
-                <Twitter className='size-4' />
-              </Button>
-              <Button size='icon' variant='ghost'>
-                <Github className='size-4' />
-              </Button>
-              <Button size='icon' variant='ghost'>
-                <Linkedin className='size-4' />
-              </Button>
+              {member.facebook && (
+                <Button size='icon' variant='ghost' asChild>
+                  <a
+                    href={member.facebook}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    <Twitter className='size-4' />
+                  </a>
+                </Button>
+              )}
+              {member.github && (
+                <Button size='icon' variant='ghost' asChild>
+                  <a
+                    href={member.github}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    <Github className='size-4' />
+                  </a>
+                </Button>
+              )}
+              {member.linkedIn && (
+                <Button size='icon' variant='ghost' asChild>
+                  <a
+                    href={member.linkedIn}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    <Linkedin className='size-4' />
+                  </a>
+                </Button>
+              )}
             </div>
           </div>
         ))}

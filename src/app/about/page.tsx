@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import {
   Accordion,
   AccordionContent,
@@ -6,35 +7,56 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 
+interface About {
+  id: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export default function Home() {
+  const [aboutItems, setAboutItems] = useState<About[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchAbout = async () => {
+      try {
+        const res = await fetch('http://localhost:5008/api/about');
+        const data = await res.json();
+        setAboutItems(data);
+      } catch (error) {
+        console.error('Failed to fetch about data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAbout();
+  }, []);
+
   return (
     <div className='p-2 grid grid-cols-2'>
       <div>
-        <h1>Frequently Asked Questions</h1>
+        <h1 className='text-xl font-bold'>Frequently Asked Questions</h1>
       </div>
-      <div className=''>
-        <Accordion type='single' collapsible className='w-full'>
-          <AccordionItem value='item-1'>
-            <AccordionTrigger>Is it accessible?</AccordionTrigger>
-            <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value='item-2'>
-            <AccordionTrigger>Is it styled?</AccordionTrigger>
-            <AccordionContent>
-              Yes. It comes with default styles that matches the other
-              components&apos; aesthetic.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value='item-3'>
-            <AccordionTrigger>Is it animated?</AccordionTrigger>
-            <AccordionContent>
-              Yes. It&apos;s animated by default, but you can disable it if you
-              prefer.
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+      <div>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <Accordion type='single' collapsible className='w-full'>
+            {aboutItems.map((item) => (
+              <AccordionItem key={item.id} value={`item-${item.id}`}>
+                <AccordionTrigger>{item.title}</AccordionTrigger>
+                <AccordionContent>
+                  <p className='font-semibold'>{item.subtitle}</p>
+                  <p>{item.description}</p>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        )}
       </div>
     </div>
   );
