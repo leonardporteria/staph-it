@@ -43,17 +43,16 @@ export default function Header() {
             {label}
           </Link>
         ))}
-
-        <div className='flex items-center justify-center gap-4'>
-          <HoverBorderGradient
-            containerClassName='rounded-full'
-            as='button'
-            className='dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2'
-          >
-            <Link href='/contact'>Get .apk</Link>
-          </HoverBorderGradient>
-          <ModeToggle />
-        </div>
+      </div>
+      <div className='flex items-center justify-center gap-4'>
+        <HoverBorderGradient
+          containerClassName='rounded-full'
+          as='button'
+          className='dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2'
+        >
+          <Link href='/contact'>Get .apk</Link>
+        </HoverBorderGradient>
+        <ModeToggle />
       </div>
     </div>
   );

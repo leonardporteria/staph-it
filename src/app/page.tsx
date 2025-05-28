@@ -2,12 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { Review } from '@/lib/types';
 import FeatureCards from '@/components/feature-cards';
 import { Button } from '@/components/ui/button';
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
-import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 
 import { Team } from '@/lib/types';
 
@@ -57,20 +57,64 @@ export default function Home() {
 
   return (
     <div className='w-full mb-10 rounded-3xl p-4'>
-      <div>
-        <h1 className='text-center text-6xl m-5'>StaPH it</h1>
+      <div className='h-[calc(100vh-128px)] w-full'>
+        <Image
+          src='/images-placeholder.png'
+          alt='placeholder'
+          className='w-full h-full object-cover'
+          width={800}
+          height={500}
+        />
+      </div>
 
-        <div className='relative z-20 flex flex-wrap items-center justify-center gap-4 pt-4'>
-          <HoverBorderGradient
-            containerClassName='rounded-full'
-            as='button'
-            className='dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2'
-          >
-            <Link href='/contact'>Download Now</Link>
-          </HoverBorderGradient>
-          <Button asChild variant='link'>
-            <Link href='/version-archive'>Get other versions</Link>
-          </Button>
+      <div className='h-[calc(100vh-64px)] w-full flex items-center justify-center bg-gray-300 px-8'>
+        <div className='relative w-full max-w-6xl h-full flex items-center justify-center'>
+          {/* Placeholder Image */}
+          <Image
+            src='/images-placeholder.png'
+            alt='placeholder'
+            fill
+            className='object-contain opacity-30'
+          />
+
+          {/* Bottom Left Text */}
+          <div className='absolute bottom-10 left-0 max-w-sm'>
+            <h1 className='text-4xl font-bold leading-none text-black'>
+              PLACE
+              <br />
+              HOLDER
+              <br />
+              TEXT
+            </h1>
+            <p className='text-sm text-black mt-4'>
+              Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec
+              rutrum congue leo eget malesuada. Vivamus magna justo.
+            </p>
+          </div>
+
+          {/* Top Right Text */}
+          <div className='absolute top-10 right-0 text-right'>
+            <h1 className='text-4xl font-bold leading-none text-black'>
+              PLACE
+              <br />
+              HOLDER
+              <br />
+              TEXT
+            </h1>
+          </div>
+
+          {/* Social Buttons */}
+          <div className='absolute right-0 top-1/2 transform -translate-y-1/2 space-y-2'>
+            <Button className='bg-white px-4 py-1 text-sm rounded shadow'>
+              socmed
+            </Button>
+            <Button className='bg-white px-4 py-1 text-sm rounded shadow'>
+              socmed
+            </Button>
+            <Button className='bg-white px-4 py-1 text-sm rounded shadow'>
+              socmed
+            </Button>
+          </div>
         </div>
       </div>
 

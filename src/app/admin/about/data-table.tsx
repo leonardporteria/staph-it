@@ -50,14 +50,16 @@ export default function AboutTable() {
   };
 
   const handleDelete = async (id: number) => {
-    await axios.delete(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${id}`);
+    await axios.delete(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/about/${id}`
+    );
     fetchData();
   };
 
   const handleFormSubmit = async (about: Partial<About>) => {
     if (about.id) {
       await axios.put(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/${about.id}`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/about/${about.id}`,
         about
       );
     } else {
