@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       'upload.wikimedia.org',
       'plus.unsplash.com',
       'media.licdn.com',
+      'drive.google.com',
     ],
   },
 };

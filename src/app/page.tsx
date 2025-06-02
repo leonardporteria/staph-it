@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { Facebook, Instagram, Twitter } from 'lucide-react';
+
 import { Review } from '@/lib/types';
 import FeatureCards from '@/components/feature-cards';
 import { Button } from '@/components/ui/button';
@@ -58,68 +60,78 @@ export default function Home() {
   return (
     <div className='w-full mb-10 rounded-3xl p-4'>
       <div className='h-[calc(100vh-128px)] w-full'>
+        {/* // ! Hero */}
         <Image
-          src='/images-placeholder.png'
+          src='/sandatap-rect.png'
           alt='placeholder'
-          className='w-full h-full object-cover'
+          className='w-full h-full object-cover pointer-events-none'
           width={800}
           height={500}
         />
       </div>
 
-      <div className='h-[calc(100vh-64px)] w-full flex items-center justify-center bg-gray-300 px-8'>
+      {/* // ! Socials */}
+      <div className='h-[calc(100vh-64px)] w-full flex items-center justify-center px-8'>
         <div className='relative w-full max-w-6xl h-full flex items-center justify-center'>
           {/* Placeholder Image */}
           <Image
-            src='/images-placeholder.png'
+            src='/phone-mockup.png'
             alt='placeholder'
             fill
-            className='object-contain opacity-30'
+            className='object-contain opacity-100 '
           />
 
           {/* Bottom Left Text */}
           <div className='absolute bottom-10 left-0 max-w-sm'>
-            <h1 className='text-4xl font-bold leading-none text-black'>
-              PLACE
+            <h1 className='text-4xl font-bold leading-none '>
+              CONNECT
               <br />
-              HOLDER
+              WITH
               <br />
-              TEXT
+              US
             </h1>
-            <p className='text-sm text-black mt-4'>
-              Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec
-              rutrum congue leo eget malesuada. Vivamus magna justo.
+            <p className='text-sm  mt-4'>
+              Join our community to help us improve the gaming experience!
             </p>
           </div>
 
           {/* Top Right Text */}
           <div className='absolute top-10 right-0 text-right'>
-            <h1 className='text-4xl font-bold leading-none text-black'>
-              PLACE
+            <h1 className='text-4xl font-bold leading-none '>
+              FOLLOW
               <br />
-              HOLDER
-              <br />
-              TEXT
+              US
             </h1>
           </div>
 
           {/* Social Buttons */}
-          <div className='absolute right-0 top-1/2 transform -translate-y-1/2 space-y-2'>
-            <Button className='bg-white px-4 py-1 text-sm rounded shadow'>
-              socmed
+          <div className='flex flex-col absolute right-0 top-1/2 transform -translate-y-1/2 space-y-2'>
+            <Button
+              variant='default'
+              className='px-4 py-1 text-sm rounded cursor-pointer'
+            >
+              <Facebook />
             </Button>
-            <Button className='bg-white px-4 py-1 text-sm rounded shadow'>
-              socmed
+            <Button
+              variant='default'
+              className='px-4 py-1 text-sm rounded cursor-pointer'
+            >
+              <Twitter />
             </Button>
-            <Button className='bg-white px-4 py-1 text-sm rounded shadow'>
-              socmed
+            <Button
+              variant='default'
+              className='px-4 py-1 text-sm rounded cursor-pointer'
+            >
+              <Instagram />
             </Button>
           </div>
         </div>
       </div>
 
+      {/* // ! Feature */}
       <FeatureCards />
 
+      {/* // ! Reviews */}
       <div className='flex flex-col items-center'>
         <h1 className='text-2xl font-semibold my-4'>User Reviews</h1>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-4xl mb-10'>
