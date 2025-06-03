@@ -140,7 +140,7 @@ export default function Home() {
       <div className='h-[calc(100vh-128px)] w-full'>
         {/* // ! Hero */}
         <Image
-          src='/sandatap-rect.png'
+          src='/images/sandatap-rect.png'
           alt='placeholder'
           className='w-full h-full object-cover pointer-events-none'
           width={800}
@@ -153,7 +153,7 @@ export default function Home() {
         <div className='relative w-full max-w-6xl h-full flex items-center justify-center'>
           {/* Placeholder Image */}
           <Image
-            src='/phone-mockup.png'
+            src='/images/phone-mockup.png'
             alt='placeholder'
             fill
             className='object-contain opacity-100 '
@@ -251,7 +251,7 @@ export default function Home() {
             muted
             playsInline
           >
-            <source src='/veerline.mp4' type='video/mp4' />
+            <source src='/videos/veerline.mp4' type='video/mp4' />
             Your browser does not support the video tag.
           </video>
         </div>

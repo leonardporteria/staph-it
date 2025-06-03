@@ -22,7 +22,7 @@ export default function Header() {
     <div className='p-4 w-full flex items-center justify-between sticky top-0 z-50 backdrop-blur-sm border-b bg-background/95 supports-[backdrop-filter]:bg-background/60'>
       <Link href='/'>
         <Image
-          src='/sandatap-typog.png'
+          src='/images/sandatap-typog.png'
           alt='veerline'
           width={150}
           height={100}

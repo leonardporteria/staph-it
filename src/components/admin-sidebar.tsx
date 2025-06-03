@@ -37,7 +37,7 @@ export default function AdminSidebar() {
           {!collapsed && (
             <Link href='/'>
               <Image
-                src='/veerline.png'
+                src='/images/veerline.png'
                 alt='veerline'
                 width={120}
                 height={50}

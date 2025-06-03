@@ -33,7 +33,7 @@ interface FooterProps {
 const Footer = ({
   logo = {
     url: 'https://ui.shadcn.com/',
-    src: '/veerline.png',
+    src: '/images/veerline.png',
     alt: 'logo',
     title: 'veerline',
   },
