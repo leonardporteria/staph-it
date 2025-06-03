@@ -10,7 +10,7 @@ import {
 export default function Home() {
   return (
     <div>
-      <div className='text-center m-4'>Features of StaPH it</div>
+      <div className='text-center m-4'>Features of Sandatap</div>
 
       <BentoGrid className='max-w-4xl mx-auto md:auto-rows-[20rem]'>
         {items.map((item, i) => (

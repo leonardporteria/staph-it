@@ -7,7 +7,7 @@ import Link from 'next/link';
 const sections = [
   {
     title: 'Product',
-    links: [{ name: 'StaPH it', href: '/' }],
+    links: [{ name: 'Sandatap', href: '/' }],
   },
   {
     title: 'Company',
@@ -18,7 +18,7 @@ const sections = [
   },
   {
     title: 'Resources',
-    links: [{ name: 'StaPH it Archive', href: '/version-archive' }],
+    links: [{ name: 'Sandatap Archive', href: '/version-archive' }],
   },
 ];
 
