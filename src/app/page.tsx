@@ -16,66 +16,9 @@ import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
 import { Team } from '@/lib/types';
 
 import GameCard from '@/components/game-card';
+import { games } from '@/lib/gamedata';
 
 export default function Home() {
-  const games = [
-    {
-      title: 'Title',
-      imageUrl: '/images/gameplay1.png',
-      streaming: '28 Streaming',
-      isOnline: true,
-    },
-    {
-      title: 'Title',
-      imageUrl: '/images/gameplay2.png',
-      streaming: '365 Streaming',
-      isOnline: true,
-    },
-    {
-      title: 'Title',
-      imageUrl: '/images/gameplay3.png',
-      streaming: '12 Streaming',
-      isOnline: true,
-    },
-    {
-      title: 'Title',
-      imageUrl: '/images/gameplay4.png',
-      streaming: '0 Streaming',
-      isOnline: true,
-    },
-    {
-      title: 'Title',
-      imageUrl: '/images/gameplay5.png',
-      streaming: 'No Streams',
-      isOnline: false,
-    },
-    {
-      title: 'Title',
-      imageUrl: '/images/gameplay6.png',
-      streaming: '82 Streaming',
-      isOnline: true,
-    },
-
-    {
-      title: 'Title',
-      imageUrl: '/images/gameplay7.png',
-      streaming: '0 Streaming',
-      isOnline: true,
-    },
-    {
-      title: 'Title',
-      imageUrl: '/images/gameplay8.png',
-      streaming: 'No Streams',
-      isOnline: false,
-    },
-    {
-      title: 'Title',
-      imageUrl: '/images/gameplay9.png',
-      streaming: '82 Streaming',
-      isOnline: true,
-    },
-  ];
-
   const [topSliderRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     slides: { perView: 4, spacing: 15 },
@@ -219,21 +162,30 @@ export default function Home() {
         </h2>
 
         {/* Top Row Carousel */}
-        <div ref={topSliderRef} className='keen-slider mb-8'>
-          {topGames.map((game, i) => (
-            <div key={i} className='keen-slider__slide'>
-              <GameCard {...game} />
-            </div>
-          ))}
-        </div>
+        <div className='grid grid-cols-4 gap-4'>
+          {/* Top Slider spanning columns 2 to 4 */}
+          <div
+            ref={topSliderRef}
+            className='keen-slider mb-8 col-span-3 col-start-2'
+          >
+            {topGames.map((game, i) => (
+              <div key={i} className='keen-slider__slide'>
+                <GameCard {...game} />
+              </div>
+            ))}
+          </div>
 
-        {/* Bottom Row Carousel (reversed direction) */}
-        <div ref={bottomSliderRef} className='keen-slider'>
-          {bottomGames.map((game, i) => (
-            <div key={i} className='keen-slider__slide'>
-              <GameCard {...game} />
-            </div>
-          ))}
+          {/* Bottom Slider spanning columns 1 to 3 */}
+          <div
+            ref={bottomSliderRef}
+            className='keen-slider col-span-3 col-start-1'
+          >
+            {bottomGames.map((game, i) => (
+              <div key={i} className='keen-slider__slide'>
+                <GameCard {...game} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
