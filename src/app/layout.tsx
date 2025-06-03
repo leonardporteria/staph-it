@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative max-w-screen w-full`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative max-w-screen w-full font-smoothcirculars`}
         suppressHydrationWarning
       >
         <ThemeProvider
