@@ -156,7 +156,7 @@ export default function Home() {
       </div>
 
       {/* // ! Carousel */}
-      <section className='bg-gradient-to-b from-black via-gray-900 to-black py-16 px-6 text-white'>
+      <section>
         <h2 className='text-4xl font-extrabold text-center mb-12'>
           Meet the Characters!
         </h2>
