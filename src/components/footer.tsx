@@ -33,9 +33,9 @@ interface FooterProps {
 const Footer = ({
   logo = {
     url: 'https://ui.shadcn.com/',
-    src: '/1to4.png',
+    src: '/veerline.png',
     alt: 'logo',
-    title: '1to4',
+    title: 'veerline',
   },
 }: FooterProps) => {
   return (
@@ -94,7 +94,7 @@ const Footer = ({
             </div>
           </div>
           <div className='mt-20 flex flex-col justify-between gap-4 border-t pt-8 text-center text-sm font-medium text-muted-foreground lg:flex-row lg:items-center lg:text-left'>
-            <p>© 2025 1to4. All rights reserved.</p>
+            <p>© 2025 Veerline. All rights reserved.</p>
             <ul className='flex justify-center gap-4 lg:justify-start'>
               <li className='hover:text-primary'>
                 <Link href='#' target='_blank'>

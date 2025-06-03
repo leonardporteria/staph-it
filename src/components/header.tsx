@@ -23,7 +23,7 @@ export default function Header() {
       <Link href='/'>
         <Image
           src='/sandatap-typog.png'
-          alt='1to4'
+          alt='veerline'
           width={150}
           height={100}
           className='pointer-events-none'

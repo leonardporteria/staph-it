@@ -37,8 +37,8 @@ export default function AdminSidebar() {
           {!collapsed && (
             <Link href='/'>
               <Image
-                src='/1to4_Typog.png'
-                alt='1to4'
+                src='/veerline.png'
+                alt='veerline'
                 width={120}
                 height={50}
                 className='pointer-events-none'
