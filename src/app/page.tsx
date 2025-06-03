@@ -1,5 +1,8 @@
 'use client';
 
+import 'keen-slider/keen-slider.min.css';
+import { useKeenSlider } from 'keen-slider/react';
+
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -7,13 +10,88 @@ import Image from 'next/image';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 import { Review } from '@/lib/types';
-import FeatureCards from '@/components/feature-cards';
 import { Button } from '@/components/ui/button';
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
 
 import { Team } from '@/lib/types';
 
+import GameCard from '@/components/game-card';
+
 export default function Home() {
+  const games = [
+    {
+      title: 'Title',
+      imageUrl: '/gameplay1.png',
+      streaming: '28 Streaming',
+      isOnline: true,
+    },
+    {
+      title: 'Title',
+      imageUrl: '/gameplay2.png',
+      streaming: '365 Streaming',
+      isOnline: true,
+    },
+    {
+      title: 'Title',
+      imageUrl: '/gameplay3.png',
+      streaming: '12 Streaming',
+      isOnline: true,
+    },
+    {
+      title: 'Title',
+      imageUrl: '/gameplay4.png',
+      streaming: '0 Streaming',
+      isOnline: true,
+    },
+    {
+      title: 'Title',
+      imageUrl: '/gameplay5.png',
+      streaming: 'No Streams',
+      isOnline: false,
+    },
+    {
+      title: 'Title',
+      imageUrl: '/gameplay6.png',
+      streaming: '82 Streaming',
+      isOnline: true,
+    },
+
+    {
+      title: 'Title',
+      imageUrl: '/gameplay7.png',
+      streaming: '0 Streaming',
+      isOnline: true,
+    },
+    {
+      title: 'Title',
+      imageUrl: '/gameplay8.png',
+      streaming: 'No Streams',
+      isOnline: false,
+    },
+    {
+      title: 'Title',
+      imageUrl: '/gameplay9.png',
+      streaming: '82 Streaming',
+      isOnline: true,
+    },
+  ];
+
+  const [topSliderRef] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    slides: { perView: 4, spacing: 15 },
+  });
+
+  const [bottomSliderRef] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    slides: { perView: 4, spacing: 15 },
+    rtl: true, // reverse direction for bottom row
+  });
+
+  // Split games evenly between top and bottom row
+  const half = Math.ceil(games.length / 2);
+  const topGames = games.slice(0, half);
+  const bottomGames = games.slice(half);
+
   const [reviews, setReviews] = useState<Review[]>([]);
   const [teamMembers, setTeamMembers] = useState<Team[]>([]);
 
@@ -128,8 +206,56 @@ export default function Home() {
         </div>
       </div>
 
-      {/* // ! Feature */}
-      <FeatureCards />
+      {/* // ! Hero */}
+      <div>
+        <h1>GET THE HIGHEST LEVELS</h1>
+        <Button>Get it now</Button>
+      </div>
+
+      {/* // ! Carousel */}
+      <section className='bg-gradient-to-b from-black via-gray-900 to-black py-16 px-6 text-white'>
+        <h2 className='text-4xl font-extrabold text-center mb-12'>
+          TRY YOUR HANDS ON
+        </h2>
+
+        {/* Top Row Carousel */}
+        <div ref={topSliderRef} className='keen-slider mb-8'>
+          {topGames.map((game, i) => (
+            <div key={i} className='keen-slider__slide'>
+              <GameCard {...game} />
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Row Carousel (reversed direction) */}
+        <div ref={bottomSliderRef} className='keen-slider'>
+          {bottomGames.map((game, i) => (
+            <div key={i} className='keen-slider__slide'>
+              <GameCard {...game} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ! // ! Video Preview */}
+      <div className='relative bg-gradient-to-b from-[#1e0034] to-[#3c006e] text-white flex flex-col items-center justify-center py-20'>
+        <h2 className='text-4xl md:text-5xl font-bold text-center mb-8'>
+          WATCH TOP <br /> PICK STREAMS
+        </h2>
+
+        <div className='relative w-[640px] max-w-full cursor-pointer'>
+          <video
+            className='w-[640px] max-w-full rounded-md'
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src='/veerline.mp4' type='video/mp4' />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
 
       {/* // ! Reviews */}
       <div className='flex flex-col items-center'>

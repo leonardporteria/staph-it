@@ -64,3 +64,10 @@ export interface About {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface GameCardProps {
+  title: string;
+  imageUrl: string;
+  streaming: string;
+  isOnline: boolean;
+}
