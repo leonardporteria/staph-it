@@ -158,11 +158,11 @@ export default function Home() {
       {/* // ! Carousel */}
       <section className='bg-gradient-to-b from-black via-gray-900 to-black py-16 px-6 text-white'>
         <h2 className='text-4xl font-extrabold text-center mb-12'>
-          TRY YOUR HANDS ON
+          Meet the Characters!
         </h2>
 
         {/* Top Row Carousel */}
-        <div className='grid grid-cols-4 gap-4'>
+        <div className='grid grid-cols-4'>
           {/* Top Slider spanning columns 2 to 4 */}
           <div
             ref={topSliderRef}
