@@ -149,12 +149,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* // ! Hero */}
-      <div>
-        <h1>GET THE HIGHEST LEVELS</h1>
-        <Button>Get it now</Button>
-      </div>
-
       {/* // ! Carousel */}
       <section>
         <h2 className='text-4xl font-extrabold text-center mb-12'>
