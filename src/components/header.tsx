@@ -50,7 +50,12 @@ export default function Header() {
           as='button'
           className='dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2'
         >
-          <Link href='/contact'>Get .apk</Link>
+          <Link
+            href='https://dl.dropboxusercontent.com/scl/fi/a1e2nomlk5md75ob8p6qv/StaPH-it-v1.06.apk?rlkey=rodnrmo9s7zowt5i3fhesvnmf&st=kfg2yddb&dl=1
+'
+          >
+            Download APK
+          </Link>
         </HoverBorderGradient>
         <ModeToggle />
       </div>
