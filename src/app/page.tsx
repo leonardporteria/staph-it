@@ -2,6 +2,7 @@
 
 import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
+import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -204,25 +205,24 @@ export default function Home() {
       </div>
 
       {/* // ! Reviews */}
-      <div className='flex flex-col items-center'>
-        <h1 className='text-2xl font-semibold my-4'>User Reviews</h1>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-4xl mb-10'>
-          {reviews.map((review: Review) => (
-            <div
-              key={review.id}
-              className='p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm bg-white dark:bg-black'
-            >
-              <p className='font-bold text-lg'>{review.name}</p>
-              <p className='font-bold text-lg'>{review.content}</p>
-              <p className='text-yellow-500'>Rating: {review.rating}/5</p>
-            </div>
-          ))}
-          {reviews.length === 0 && (
-            <p className='text-gray-500 col-span-full text-center'>
-              No approved reviews yet.
-            </p>
-          )}
-        </div>
+      <div className='flex flex-col items-center my-10'>
+        <h1 className='text-2xl font-semibold mb-4'>User Reviews</h1>
+
+        {reviews.length > 0 ? (
+          <div className='h-[40rem] w-full max-w-6xl rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden'>
+            <InfiniteMovingCards
+              items={reviews.map((review) => ({
+                quote: review.content,
+                name: review.name,
+                title: `Rating: ${review.rating}/5`,
+              }))}
+              direction='right'
+              speed='slow'
+            />
+          </div>
+        ) : (
+          <p className='text-gray-500 text-center'>No approved reviews yet.</p>
+        )}
       </div>
 
       <div className='flex flex-col items-center'>
