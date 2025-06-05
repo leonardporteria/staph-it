@@ -205,11 +205,11 @@ export default function Home() {
       </div>
 
       {/* // ! Reviews */}
-      <div className='flex flex-col items-center my-10'>
+      <div className='flex flex-col items-center my-10 '>
         <h1 className='text-2xl font-semibold mb-4'>User Reviews</h1>
 
         {reviews.length > 0 ? (
-          <div className='h-[40rem] w-full max-w-6xl rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden'>
+          <div className='h-[40rem] w-full max-w-6xl rounded-md flex flex-col antialiased items-center justify-center relative overflow-hidden'>
             <InfiniteMovingCards
               items={reviews.map((review) => ({
                 quote: review.content,

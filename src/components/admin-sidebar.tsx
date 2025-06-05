@@ -40,7 +40,7 @@ export default function AdminSidebar() {
                 src='/images/veerline.png'
                 alt='veerline'
                 width={120}
-                height={50}
+                height={120}
                 className='pointer-events-none'
               />
             </Link>
