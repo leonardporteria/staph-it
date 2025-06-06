@@ -1,18 +1,14 @@
 import './globals.css';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Cinzel } from 'next/font/google';
 import type { Metadata } from 'next';
 
 import { ThemeProvider } from '@/components/theme-provider';
 import LayoutClient from './layout-client';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const cinzel = Cinzel({
+  variable: '--font-cinzel',
   subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  weight: ['400', '700', '900'],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative max-w-screen w-full font-smoothcirculars`}
+        className={`${cinzel.variable} antialiased relative max-w-screen w-full font-smoothcirculars`}
         suppressHydrationWarning
       >
         <ThemeProvider
