@@ -5,5 +5,9 @@ interface AboutLayoutProps {
 }
 
 export default function AboutLayout({ children }: AboutLayoutProps) {
-  return <span>{children}</span>;
+  return (
+    <span className='w-full flex flex-col items-center justify-center'>
+      {children}
+    </span>
+  );
 }

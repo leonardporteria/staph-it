@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+
 import {
   Accordion,
   AccordionContent,
@@ -7,58 +7,28 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 
-interface About {
-  id: number;
-  title: string;
-  subtitle: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
-}
+import { aboutData } from '@/lib/aboutdata';
 
 export default function Home() {
-  const [aboutItems, setAboutItems] = useState<About[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchAbout = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/about`
-        );
-        const data = await res.json();
-        setAboutItems(data);
-      } catch (error) {
-        console.error('Failed to fetch about data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAbout();
-  }, []);
+  const aboutItems = aboutData;
 
   return (
-    <div className='p-2 grid grid-cols-2'>
+    <div className=' flex flex-col w-10/12 items-center justify-center'>
       <div>
         <h1 className='text-xl font-bold'>Frequently Asked Questions</h1>
       </div>
-      <div>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <Accordion type='single' collapsible className='w-full'>
-            {aboutItems.map((item) => (
-              <AccordionItem key={item.id} value={`item-${item.id}`}>
-                <AccordionTrigger>{item.title}</AccordionTrigger>
-                <AccordionContent>
-                  <p className='font-semibold'>{item.subtitle}</p>
-                  <p>{item.description}</p>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        )}
+      <div className='w-full flex justify-center items-center'>
+        <Accordion type='single' collapsible className='w-full'>
+          {aboutItems.map((item) => (
+            <AccordionItem key={item.id} value={`item-${item.id}`}>
+              <AccordionTrigger>{item.title}</AccordionTrigger>
+              <AccordionContent>
+                <p className='font-semibold'>{item.subtitle}</p>
+                <p>{item.description}</p>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </div>
   );

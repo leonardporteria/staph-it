@@ -23,6 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' suppressHydrationWarning>
+      <link rel='icon' href='/sandatap.ico' type='image/x-icon' />
       <body
         className={`${cinzel.variable} antialiased relative max-w-screen w-full font-smoothcirculars`}
         suppressHydrationWarning
