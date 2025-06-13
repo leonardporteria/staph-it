@@ -4,20 +4,18 @@ import 'keen-slider/keen-slider.min.css';
 import { useKeenSlider } from 'keen-slider/react';
 import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
 
-import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 
-import { Review } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
 
-import { Team } from '@/lib/types';
-
 import GameCard from '@/components/game-card';
 import { games } from '@/lib/gamedata';
+import { reviewData } from '@/lib/reviewdata';
+import { teamData } from '@/lib/teamdata';
 
 export default function Home() {
   const [topSliderRef] = useKeenSlider<HTMLDivElement>({
@@ -36,40 +34,8 @@ export default function Home() {
   const topGames = games.slice(0, half);
   const bottomGames = games.slice(half);
 
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [teamMembers, setTeamMembers] = useState<Team[]>([]);
-
-  useEffect(() => {
-    const fetchReviews = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/reviews`
-        );
-        const data = await res.json();
-        const approvedReviews = data.filter(
-          (review: Review) => review.approved
-        );
-        setReviews(approvedReviews);
-      } catch (error) {
-        console.error('Failed to fetch reviews:', error);
-      }
-    };
-
-    const fetchTeamMembers = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/teams`
-        );
-        const data = await res.json();
-        setTeamMembers(data);
-      } catch (error) {
-        console.error('Failed to fetch team members:', error);
-      }
-    };
-
-    fetchReviews();
-    fetchTeamMembers();
-  }, []);
+  const reviews = reviewData;
+  const teamMembers = teamData;
 
   // Format team data for AnimatedTooltip
   const formattedTeam = teamMembers.map((member) => ({
