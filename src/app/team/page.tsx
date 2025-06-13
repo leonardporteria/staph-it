@@ -1,36 +1,20 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { Twitter, Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Facebook } from 'lucide-react';
 import Image from 'next/image';
-import { Team } from '@/lib/types';
+
 import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card';
+import { teamData } from '@/lib/teamdata';
 
 export default function Home() {
-  const [team, setTeam] = useState<Team[]>([]);
-
-  useEffect(() => {
-    const fetchTeam = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/teams`
-        );
-        const data: Team[] = await res.json();
-        setTeam(data);
-      } catch (error) {
-        console.error('Failed to fetch team members:', error);
-      }
-    };
-
-    fetchTeam();
-  }, []);
+  const team = teamData;
 
   return (
     <div className='space-y-10'>
       {/* Floating 3D Cards Grid */}
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6'>
         {team.map((member) => (
-          <CardContainer key={member.id} className='inter-var'>
+          <CardContainer key={member.id} className='inter-var w-full'>
             <CardBody className='bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border'>
               <CardItem
                 translateZ='50'
@@ -51,7 +35,7 @@ export default function Home() {
                   alt={member.name}
                   width={500}
                   height={500}
-                  className='h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl'
+                  className='h-60 w-full object-contain rounded-xl group-hover/card:shadow-xl'
                 />
               </CardItem>
               <div className='flex justify-center items-center gap-4 mt-6'>
@@ -85,7 +69,7 @@ export default function Home() {
                     target='_blank'
                     className='text-sm dark:text-white'
                   >
-                    <Twitter className='size-4' />
+                    <Facebook className='size-4' />
                   </CardItem>
                 )}
               </div>

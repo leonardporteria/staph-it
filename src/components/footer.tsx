@@ -1,6 +1,6 @@
 'use client';
 
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaEnvelope, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -54,23 +54,32 @@ const Footer = ({
               <p className='text-sm text-muted-foreground'>Game Developers</p>
               <ul className='flex items-center space-x-6 text-muted-foreground'>
                 <li className='font-medium hover:text-primary'>
-                  <Link href='#' target='_blank'>
+                  <Link
+                    href='https://www.instagram.com/sandatap_/'
+                    target='_blank'
+                  >
                     <FaInstagram className='size-6' />
                   </Link>
                 </li>
                 <li className='font-medium hover:text-primary'>
-                  <Link href='#' target='_blank'>
+                  <Link
+                    href='https://www.facebook.com/people/Sandatap/61576853789578/'
+                    target='_blank'
+                  >
                     <FaFacebook className='size-6' />
                   </Link>
                 </li>
                 <li className='font-medium hover:text-primary'>
-                  <Link href='#' target='_blank'>
+                  <Link href='https://x.com/Sandatap_' target='_blank'>
                     <FaTwitter className='size-6' />
                   </Link>
                 </li>
                 <li className='font-medium hover:text-primary'>
-                  <Link href='#' target='_blank'>
-                    <FaLinkedin className='size-6' />
+                  <Link
+                    href='mailto:veerline.sandatap@gmail.com'
+                    target='_blank'
+                  >
+                    <FaEnvelope className='size-6' />
                   </Link>
                 </li>
               </ul>

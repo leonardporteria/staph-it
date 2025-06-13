@@ -63,7 +63,7 @@ export default function Home() {
         <div className='relative w-full max-w-6xl h-full flex items-center justify-center'>
           {/* Placeholder Image */}
           <Image
-            src='/images/phone-mockup.png'
+            src='/images/mockups/mockup (4).png'
             alt='placeholder'
             fill
             className='object-contain opacity-100 '
@@ -150,26 +150,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ! // ! Video Preview */}
-      <div className='relative bg-gradient-to-b from-[#1e0034] to-[#3c006e] text-white flex flex-col items-center justify-center py-20'>
-        <h2 className='text-4xl md:text-5xl font-bold text-center mb-8'>
-          WATCH TOP <br /> PICK STREAMS
-        </h2>
-
-        <div className='relative w-[640px] max-w-full cursor-pointer'>
-          <video
-            className='w-[640px] max-w-full rounded-md'
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src='/videos/veerline.mp4' type='video/mp4' />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </div>
-
       {/* // ! Reviews */}
       <div className='flex flex-col items-center my-10 '>
         <h1 className='text-2xl font-semibold mb-4'>User Reviews</h1>
@@ -191,8 +171,24 @@ export default function Home() {
         )}
       </div>
 
-      <div className='flex flex-col items-center'>
-        <h1 className='text-2xl font-semibold my-4'>Meet the Team</h1>
+      {/* ! // ! Team */}
+      <div className='relative flex flex-col items-center justify-center py-20 gap-4'>
+        <h2 className='text-4xl md:text-5xl font-bold text-center mb-8'>
+          Meet the Team
+        </h2>
+
+        <div className='relative w-[640px] max-w-full cursor-pointer'>
+          <video
+            className='w-[640px] max-w-full rounded-md'
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src='/videos/veerline.mp4' type='video/mp4' />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <div className='flex flex-row items-center justify-center mb-10 w-full'>
           <AnimatedTooltip items={formattedTeam} />
         </div>
